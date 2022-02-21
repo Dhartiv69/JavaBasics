@@ -18,6 +18,20 @@ public class MainProgram {
 				System.out.println();
 				
 	}
-
+              System.out.println("-------------------------");
+		
+		for (int i = 0; i<4; i++) {
+			
+			for (int j = 1; j<10; j++) {
+				
+				if (j%2!=0) {
+					
+					System.out.print(j + " ");
+					
+				}
+			}
+		
+			        System.out.println();
+		}
   }
 }

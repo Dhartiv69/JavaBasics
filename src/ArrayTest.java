@@ -34,7 +34,14 @@ public class ArrayTest {
 			total = total + todayOrder[elm];
 			
 		}
-		System.out.println("Total is :" + total);				
+		System.out.println("Total is :" + total);	
+		
+	
+			
+			
+		}
+		
+		
 		}
 			
-}
+
