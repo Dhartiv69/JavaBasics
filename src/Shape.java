@@ -1,90 +1,90 @@
-import java.util.Arrays;
 
 public class Shape {
-	
-      public static void main(String arg[]) {
+
+	public static void main(String arg[]) {
     	  
-    	 ShapeData shape1 = new ShapeData (6);
-    	 ShapeData shape2 = new ShapeData (5, 2); 
-    	 ShapeData shape3 = new ShapeData (1.0);
+    	 ShapeData shape1 = new ShapeData ("SQURE - ",8);
+    	 ShapeData shape2 = new ShapeData ("RECTANGLE - ",8, 2); 
+    	 ShapeData shape3 = new ShapeData ("CIRCLE - ",7);
     	 
-    	 System.out.println("Area of Squre is : "+shape1.getArea());
-    	 System.out.println("Area of Rectangle is : "+shape2.getArea());
-    	 System.out.println("Area of Circle is : "+shape3.getAreaOfCircle());
+    	 System.out.println("Shape Name and Area : "+shape1.getName()+shape1.getArea());
+    	 System.out.println("Shape Name and Area : "+shape2.getName()+shape2.getArea());
+    	 System.out.println("Shape Name and Area : "+shape3.getName()+shape3.getArea());
     	 
-    	 
-    	double [] shapes = {36, 10, 3.14};
-    	System.out.println( "Ascending Numbers: ");
+    	 System.out.println("-----------------------------------------");
     	
-    	Arrays.sort(shapes);
-    	System.out.println( Arrays.toString(shapes));
-            int Temp = 0;
-            System.out.println("--------------------");
-            System.out.println("Descending Numbers : ");	
-            for (int i= 0; i<shapes.length; i++) {
-            	for (int j = i+1; j<shapes.length; j++) {
-            		if (shapes[i]<shapes[j]) {
-            			Temp = (int) shapes[i];
-            			shapes[i] = shapes[j];
-            			shapes [j] = Temp;
-            		}
-            	
-            	}
-            	
-            }
-    	    
-            for (int i= 0; i<shapes.length; i++) {
-            	System.out.print(shapes[i] + " ");
-            }
-      
+    	 ShapeData[] shapes = {shape1, shape2, shape3};
+    	 
+    	 ShapeData temp = null ;
+    	 System.out.println("Ascending Order");
+    	 
+    	 for (int i =0; i<shapes.length; i++) {
+    		 ShapeData s1 = shapes [i];
+    		 
+    		 for(int j=1+i; j<shapes.length; j++) {
+    			 ShapeData s2 = shapes [j]; 
+    		  if (s1.getArea()>s2.getArea()) {
+    	    	 temp = s1;
+    	    	 shapes[i] = s2;
+    	         shapes[j] = temp;
+    	     }
+    	 
+       }
+
+    }
+    			
+    	 for (ShapeData s : shapes) {
+    		 System.out.println(s.getArea());
+    		 }
       }
-
-}
-
-
+}  
 
 class ShapeData {
 	
 	
+	private String name;
 	private int length;
 	private int width;
-	private double redius;
-	
+	private double area;
+	private final double PI = 3.14;
 
-	public ShapeData(int length) {
+	public ShapeData() {
 		
+	}
+	
+	public ShapeData(String name,int length) {
+		this.name = name;
 		this.length = length;
 		this.width = length;
+		setArea();
 	}
 	
 	
-	public ShapeData(int length, int width) {
-		
+	public ShapeData(String name, int length, int width) {
+		this.name = name;
 		this.length = length;
 		this.width = width;
-	}
- 
-	public ShapeData(double redius) {
-		
-		this.redius = redius;
+		setArea();
 	}
 
 
-	public int getArea () {
-		 int area = length * width;
-		 
-	   return area;	
-	}
-     
-    public double getAreaOfCircle() {
-    	double area = Math.PI * redius * redius;
-       return area;
+	private void setArea () {
+		if (name.equals("SQURE - ")) {
+		   this.area = length *length;
+    } else if (name.equals("RECTANGLE - ")) {
+    	   this.area = length * width;
+    } else if (name.equals("CIRCLE - ")) {
+    	   this.area = PI * length * length;
+    } else {
+    	   this.area = 0;
     }
-    	
-    	
-  
-
-
+}  	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getLength() {
 		return length;
 	}
@@ -97,15 +97,10 @@ class ShapeData {
 	public void setWidth(int width) {
 		this.width = width;
 	}
-    public double getRedius() {
-		return redius;
+    public double getArea() {
+		return area;
 	}
-    public void setRedius(int redius) {
-		this.redius = redius;
-	}
-	
+
 	
 	
 }
-	
-	
